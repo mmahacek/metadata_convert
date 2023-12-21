@@ -1,6 +1,11 @@
 # Metadata context converter
 
-This is a script to convert custom OpenNMS metadata records to comply with the requirement for custom contexts to start with `X-`
+As of Meridian 2023.1.11 and Horizon 32.0.6, the Nodes REST endpoint was updated to allow modification of metadata, with the caveat that only contexts starting with `X-` can be modified.
+All other contexts are considered reserved for internal use.
+
+This is a script to convert custom OpenNMS metadata records to comply with the requirement for custom contexts to start with `X-`.
+Any existing metadata records on nodes, IP interfaces, and monitored services with a custom context will be copied over to a new metadata record.
+Any pre-existing metadata records will be left intact.
 
 ## Running the script
 
