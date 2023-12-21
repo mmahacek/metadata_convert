@@ -1,0 +1,2 @@
+pyonms==0.1.2
+python-dotenv
