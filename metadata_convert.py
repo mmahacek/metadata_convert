@@ -2,22 +2,24 @@
 
 """One-time convert custom OpenNMS metadata to `X-` prefix"""
 
-import os
+import getpass
 
 import pyonms
-from dotenv import load_dotenv
 from pyonms.dao.nodes import NodeComponents
 from pyonms.models.node import Metadata
 from tqdm import tqdm
 
-load_dotenv()
-
 RESERVED_CONTEXTS = ["requisition"]
 
+
+hostname = input("Enter hostname: ")
+username = input("Enter username: ")
+password = getpass.getpass("Enter password: ")
+
 server = pyonms.PyONMS(
-    hostname=os.environ.get("onms_host", "http://localhost:8089/opennms/"),
-    username=os.environ.get("onms_user", "admin"),
-    password=os.environ.get("onms_pass", "admin"),
+    hostname=hostname,
+    username=username,
+    password=password,
 )
 
 nodes = server.nodes.get_nodes(
